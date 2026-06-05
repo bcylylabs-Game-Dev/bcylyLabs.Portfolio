@@ -69,7 +69,7 @@
     <nav class="fixed top-0 left-0 right-0 z-50 bg-zinc-950/80 backdrop-blur-lg border-b border-zinc-800">
         <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center text-2xl font-bold shadow-lg">BL</div>
+                <img src="images/logo.jpg" alt="BCYLY Labs" class="w-10 h-10 rounded-full object-cover shadow-lg border border-white/10">
                 <div>
                     <span class="font-bold text-2xl tracking-tighter">BCYLY</span>
                     <span class="text-indigo-400 font-semibold">LABS</span>
@@ -154,8 +154,8 @@
             
             <!-- Hero Visual -->
             <div class="relative flex justify-center">
-                <div class="w-80 h-80 md:w-96 md:h-96 bg-gradient-to-br from-indigo-500/20 to-purple-600/20 rounded-[4rem] flex items-center justify-center border border-white/10 backdrop-blur-xl shadow-2xl">
-                    <img src="images/logo.jpg" alt="BCYLY Labs Logo" class="w-64 h-64 object-contain">
+                <div class="w-80 h-80 md:w-96 md:h-96 rounded-[4rem] overflow-hidden border border-white/10 backdrop-blur-xl shadow-2xl">
+                    <img src="images/logo.jpg" alt="BCYLY Labs Logo" class="w-full h-full object-cover">
                 </div>
                 <!-- Floating badge -->
                 <div class="absolute -top-8 -right-8 bg-zinc-900 border border-indigo-500 rounded-3xl px-6 py-3 text-center shadow-2xl">
@@ -268,24 +268,28 @@
             <div class="grid md:grid-cols-2 gap-8">
                 <!-- FlexiPlace Asset -->
                 <div class="bg-zinc-900 border border-purple-900/50 rounded-3xl p-10 hover:border-purple-500/50 transition-all">
-                    <div class="flex justify-between items-start mb-8">
-                        <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-2xl flex items-center justify-center">
-                            <i class="fas fa-th-large text-4xl text-white"></i>
-                        </div>
+                    <div class="flex justify-end mb-6">
                         <div class="text-right">
-                            <div class="text-emerald-400 font-semibold">$29.99</div>
+                            <div class="text-emerald-400 font-semibold">$15.99</div>
                             <div class="text-xs text-zinc-500">Unity Asset Store</div>
                         </div>
                     </div>
-                    
-                    <h3 class="text-2xl font-semibold mb-3">FlexiPlace - Object Placement System</h3>
-                    <div class="flex items-center gap-2 text-sm text-zinc-400 mb-6">
-                        <span class="bg-zinc-800 px-3 py-1 rounded-full">Editor Tool</span>
-                        <span class="bg-zinc-800 px-3 py-1 rounded-full">Placement</span>
+
+                    <div class="flex gap-6 items-start mb-4">
+                        <div class="w-32 h-32 md:w-36 md:h-36 flex-shrink-0 rounded-2xl overflow-hidden border-2 border-purple-500/40 shadow-xl">
+                            <img src="images/FlexiPlace.png" alt="FlexiPlace" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h3 class="text-2xl font-semibold mb-3">FlexiPlace - Object Placement System</h3>
+                            <div class="flex flex-wrap items-center gap-2 text-sm text-zinc-400">
+                                <span class="bg-zinc-800 px-3 py-1 rounded-full">Editor Tool</span>
+                                <span class="bg-zinc-800 px-3 py-1 rounded-full">Placement</span>
+                            </div>
+                        </div>
                     </div>
-                    
+
                     <p class="text-zinc-300 leading-relaxed mb-8">
-                        Powerful object placement system with overlap validation, grid snapping, rotation tools, 
+                        Powerful object placement system with overlap validation, grid snapping, rotation tools,
                         and intuitive editor workflow. Perfect for level designers and developers building complex scenes.
                     </p>
                     
