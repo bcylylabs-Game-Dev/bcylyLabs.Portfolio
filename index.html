@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bcyly Labs | Game Development Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600&display=swap');
+        
+        :root {
+            --primary: #6366f1;
+        }
+        
+        .tail-container {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4f46e5 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 25px 50px -12px rgb(99 102 241 / 0.4);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: linear-gradient(to right, #6366f1, #a855f7);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .section-title {
+            background: linear-gradient(90deg, #6366f1, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .app-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover .app-icon {
+            transform: scale(1.1) rotate(3deg);
+        }
+    </style>
+</head>
+<body class="tail-container bg-zinc-950 text-white overflow-x-hidden">
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-zinc-950/80 backdrop-blur-lg border-b border-zinc-800">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center text-2xl font-bold shadow-lg">BL</div>
+                <div>
+                    <span class="font-bold text-2xl tracking-tighter">BCYLY</span>
+                    <span class="text-indigo-400 font-semibold">LABS</span>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-10 text-sm font-medium">
+                <a href="#about" class="nav-link text-zinc-300 hover:text-white transition-colors">About</a>
+                <a href="#projects" class="nav-link text-zinc-300 hover:text-white transition-colors">Projects</a>
+                <a href="#unity" class="nav-link text-zinc-300 hover:text-white transition-colors">Unity Assets</a>
+                <a href="https://assetstore.unity.com/publishers/99151" target="_blank" class="nav-link text-zinc-300 hover:text-white transition-colors">Publisher</a>
+                <a href="#contact" class="nav-link text-zinc-300 hover:text-white transition-colors">Contact</a>
+            </div>
+            
+            <a href="mailto:bcylylabs@gmail.com"
+               class="px-6 py-3 bg-white text-zinc-950 rounded-3xl font-semibold flex items-center gap-2 hover:bg-indigo-400 hover:text-white transition-all">
+                <i class="fas fa-envelope"></i>
+                Contact
+            </a>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-3xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-zinc-900 border-t border-zinc-800 py-6">
+            <div class="flex flex-col gap-6 px-8 text-lg font-medium">
+                <a href="#about" class="mobile-link">About</a>
+                <a href="#projects" class="mobile-link">Projects</a>
+                <a href="#unity" class="mobile-link">Unity Assets</a>
+                <a href="https://assetstore.unity.com/publishers/99151" target="_blank" class="mobile-link">Publisher</a>
+                <a href="#contact" class="mobile-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero-bg min-h-screen flex items-center pt-20">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8">
+                <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-5 py-2 rounded-3xl text-sm">
+                    <span class="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></span>
+                    Los Angeles, California
+                </div>
+                
+                <h1 class="text-6xl md:text-7xl font-bold leading-none tracking-tighter">
+                    BCYLY<br>LABS
+                </h1>
+                
+
+                
+                <p class="max-w-md text-xl text-zinc-300">
+                    Building addictive mobile games and powerful Unity assets.
+                </p>
+                
+                <div class="flex flex-wrap gap-4">
+                    <a href="#projects" 
+                       class="px-8 py-4 bg-white text-zinc-950 rounded-3xl font-semibold flex items-center gap-3 hover:scale-105 transition-all shadow-2xl">
+                        <i class="fas fa-gamepad"></i>
+                        View My Games
+                    </a>
+                    <a href="mailto:bcylylabs@gmail.com" target="_blank"
+                       class="px-8 py-4 border border-white/30 hover:border-white/70 rounded-3xl font-medium flex items-center gap-3 transition-all">
+                        <i class="fas fa-envelope text-xl"></i>
+                        Get in Touch
+                    </a>
+                </div>
+                
+                <div class="flex items-center gap-8 pt-8">
+                    <div>
+                        <div class="text-4xl font-bold text-indigo-400">4+</div>
+                        <div class="text-sm text-zinc-400">Published Games</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold text-purple-400">2</div>
+                        <div class="text-sm text-zinc-400">Unity Assets</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Hero Visual -->
+            <div class="relative flex justify-center">
+                <div class="w-80 h-80 md:w-96 md:h-96 bg-gradient-to-br from-indigo-500/20 to-purple-600/20 rounded-[4rem] flex items-center justify-center border border-white/10 backdrop-blur-xl shadow-2xl">
+                    <img src="images/logo.jpg" alt="BCYLY Labs Logo" class="w-64 h-64 object-contain">
+                </div>
+                <!-- Floating badge -->
+                <div class="absolute -top-8 -right-8 bg-zinc-900 border border-indigo-500 rounded-3xl px-6 py-3 text-center shadow-2xl">
+                    <div class="text-indigo-400 text-sm font-medium">Unity Expert</div>
+                    <div class="text-2xl font-bold">C# • 3D • Mobile</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 flex flex-col items-center">
+            <div class="text-xs tracking-widest opacity-60">SCROLL TO EXPLORE</div>
+            <i class="fas fa-chevron-down text-3xl animate-bounce mt-2"></i>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-24 bg-zinc-950">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-16 items-center">
+                <div class="md:col-span-5">
+                    <div class="sticky top-24">
+                        <h2 class="section-title text-6xl font-bold tracking-tighter mb-6">About Us</h2>
+                        <a href="mailto:bcylylabs@gmail.com"
+                           class="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 transition-colors">
+                            <i class="fas fa-envelope"></i>
+                            <span class="font-medium">Email us →</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="md:col-span-7 space-y-8 text-lg leading-relaxed text-zinc-300">
+                    <p>
+                        We're <span class="font-semibold text-white">bcyly Labs</span>, a passionate game development studio 
+                        based in Los Angeles, California.
+                    </p>
+                    <p>
+                        As a studio, we have hands-on experience with Unity 3D scripting and C# programming. 
+                        We are proficient at understanding and implementing game mechanics, creating engaging player experiences, 
+                        and publishing polished mobile games on Google Play Store.
+                    </p>
+                    <p>
+                        We love turning ideas into addictive gameplay — from casual sorting puzzles to action-packed simulators. 
+                        Our focus is on clean code, smooth performance, and delivering fun that keeps players coming back.
+                    </p>
+                    
+                    <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 mt-12">
+                        <div class="grid grid-cols-2 gap-8 text-center">
+                            <div>
+                                <div class="text-5xl font-bold text-purple-400">4</div>
+                                <div class="mt-2 text-sm uppercase tracking-widest">Google Play Games</div>
+                            </div>
+                            <div>
+                                <div class="text-5xl font-bold text-indigo-400">2</div>
+                                <div class="mt-2 text-sm uppercase tracking-widest">Unity Asset Store</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="py-24 bg-zinc-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-end mb-16">
+                <div>
+                    <span class="text-indigo-400 font-medium text-sm tracking-widest">MY WORK</span>
+                    <h2 class="section-title text-5xl font-bold tracking-tighter">Featured Games</h2>
+                </div>
+                <a href="https://play.google.com/store/apps/developer?id=FunBox+Studios" target="_blank" 
+                   class="hidden md:flex items-center gap-2 text-sm hover:text-indigo-300">
+                    More on Play Store <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <div class="grid md:grid-cols-1 gap-8">
+                <div class="project-card bg-zinc-950 border border-zinc-800 rounded-3xl overflow-hidden card-hover max-w-2xl mx-auto">
+                    <div class="h-64 bg-zinc-800 flex items-center justify-center relative">
+                        <img src="images/4.jpg" alt="Pet Sort Game" 
+                             class="app-icon w-48 h-48 object-cover rounded-2xl shadow-2xl">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-semibold mb-1">Pet Sort: Match 3 Sorting Game</h3>
+                        <div class="text-indigo-400 text-sm mb-4">FunBox Studios • Puzzle • 4.8★</div>
+                        <p class="text-zinc-400 line-clamp-3">
+                            Welcome to Pet Sort It 3D! Sort adorable pets in this exciting match-3 puzzle game. 
+                            Hatch, collect and organize 100+ cute animals with satisfying gameplay.
+                        </p>
+                        <a href="https://play.google.com/store/apps/details?id=com.sort.pair.match.puzzle.game" target="_blank"
+                           class="mt-8 inline-flex items-center gap-3 text-sm font-medium text-indigo-400 hover:text-white">
+                            PLAY ON GOOGLE PLAY 
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- UNITY ASSETS -->
+    <section id="unity" class="py-24 bg-zinc-950">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="px-5 py-2 bg-purple-500/10 text-purple-400 rounded-full text-sm font-medium">UNITY ASSET STORE</span>
+                <h2 class="section-title text-5xl font-bold tracking-tighter mt-6">Our Unity Assets</h2>
+                <p class="text-zinc-400 mt-4 max-w-md mx-auto">High-quality tools and utilities for Unity developers</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- FlexiPlace Asset -->
+                <div class="bg-zinc-900 border border-purple-900/50 rounded-3xl p-10 hover:border-purple-500/50 transition-all">
+                    <div class="flex justify-between items-start mb-8">
+                        <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-2xl flex items-center justify-center">
+                            <i class="fas fa-th-large text-4xl text-white"></i>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-emerald-400 font-semibold">$29.99</div>
+                            <div class="text-xs text-zinc-500">Unity Asset Store</div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-2xl font-semibold mb-3">FlexiPlace - Object Placement System</h3>
+                    <div class="flex items-center gap-2 text-sm text-zinc-400 mb-6">
+                        <span class="bg-zinc-800 px-3 py-1 rounded-full">Editor Tool</span>
+                        <span class="bg-zinc-800 px-3 py-1 rounded-full">Placement</span>
+                    </div>
+                    
+                    <p class="text-zinc-300 leading-relaxed mb-8">
+                        Powerful object placement system with overlap validation, grid snapping, rotation tools, 
+                        and intuitive editor workflow. Perfect for level designers and developers building complex scenes.
+                    </p>
+                    
+                    <a href="https://assetstore.unity.com/packages/tools/utilities/flexiplace-object-placement-system-overlap-validation-371876" 
+                       target="_blank"
+                       class="inline-flex items-center gap-3 w-full justify-center bg-purple-600 hover:bg-purple-500 text-white font-semibold py-4 rounded-2xl transition-all">
+                        <i class="fas fa-shopping-cart"></i>
+                        BUY ON UNITY ASSET STORE
+                    </a>
+                </div>
+
+                <!-- Simple Country Selection -->
+                <div class="bg-zinc-900 border border-purple-900/30 rounded-3xl p-10 opacity-90">
+                    <div class="w-16 h-16 mx-auto bg-gradient-to-br from-purple-500 to-indigo-600 rounded-2xl flex items-center justify-center mb-8">
+                        <i class="fas fa-globe text-4xl text-white"></i>
+                    </div>
+                    
+                    <h3 class="text-2xl font-semibold mb-3 text-center">"Simple Country Selection"</h3>
+                    <p class="text-zinc-300 text-center leading-relaxed mb-8">
+                        Easy dropdown with all countries and flags. Great for menus, settings, and localization.
+                    </p>
+                    
+                    <a href="#" 
+                       class="inline-block w-full text-center py-4 border border-purple-500/50 text-purple-400 hover:bg-purple-500/10 rounded-2xl transition-all">
+                        COMING SOON
+                    </a>
+                </div>
+            </div>
+
+            <!-- Publisher Link -->
+            <div class="mt-16 text-center">
+                <a href="https://assetstore.unity.com/publishers/99151" target="_blank"
+                   class="inline-flex items-center gap-3 px-8 py-4 bg-white/10 hover:bg-white/20 border border-white/20 rounded-3xl text-lg font-medium transition-all">
+                    <i class="fas fa-store"></i>
+                    View All Assets by bcyly Labs on Unity Asset Store →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-24 bg-zinc-900">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16">
+                <div>
+                    <h2 class="section-title text-5xl font-bold tracking-tighter">Let's Connect</h2>
+                    <p class="mt-6 text-zinc-400 text-lg">
+                        Have a project idea? Want to collaborate on a Unity game or asset? 
+                        Drop us a message — we reply fast!
+                    </p>
+                    
+                    <div class="mt-12 space-y-8">
+                        <div class="flex items-center gap-6">
+                            <div class="w-12 h-12 bg-zinc-800 rounded-2xl flex items-center justify-center text-2xl">📧</div>
+                            <div>
+                                <div class="text-sm text-zinc-400">Email</div>
+                                <a href="mailto:bcylylabs@gmail.com" class="font-medium hover:text-indigo-300">bcylylabs@gmail.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Contact Card -->
+                <div class="bg-zinc-950 border border-zinc-800 rounded-3xl p-10 flex flex-col justify-center">
+                    <div class="text-center">
+                        <div class="text-6xl mb-6">🚀</div>
+                        <div class="font-semibold text-3xl mb-2">Ready to build something epic?</div>
+                        <p class="text-zinc-400">Whether it's a new mobile game or a custom Unity asset — we're all ears.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-12 border-t border-zinc-800">
+        <div class="max-w-7xl mx-auto px-6 text-center text-sm text-zinc-500">
+            <p>© 2026 bcyly Labs. Made with ❤️ and lots of coffee in Los Angeles, California.</p>
+            <p class="mt-3">Static portfolio — hosted on GitHub Pages • Feel free to fork &amp; customize</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileBtn.innerHTML = mobileMenu.classList.contains('hidden') 
+                ? `<i class="fas fa-bars"></i>` 
+                : `<i class="fas fa-times"></i>`;
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href') === '#') return;
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        mobileBtn.innerHTML = `<i class="fas fa-bars"></i>`;
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
