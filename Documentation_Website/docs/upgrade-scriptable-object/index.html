@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upgrade ScriptableObject | UPFS Documentation</title>
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+  <link rel="stylesheet" href="../../assets/style.css" />
+</head>
+<body style="margin: 0; background: var(--canvas); color: var(--text); min-height: 100vh; display: flex;">
+
+  <!-- Sidebar Mobile Backdrop -->
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMobileSidebar()"></div>
+
+  <!-- Sidebar -->
+  <aside class="docs-sidebar" id="docsSidebar" style="width: var(--sidebar-width); flex-shrink: 0; height: 100vh; position: sticky; top: 0; background: var(--navy-900); border-right: 1px solid var(--sidebar-border); display: flex; flex-direction: column;">
+    <div class="sidebar-brand-area" style="padding: 18px 14px 12px; border-bottom: 1px solid #293344;">
+      <a class="brand-lockup sidebar-brand" href="../../index.html" style="color: #fff; margin-bottom: 15px;">
+        <span class="brand-mark"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg></span>
+        <span><strong>UPFS</strong><small>Documentation</small></span>
+      </a>
+      <label class="sidebar-search">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input id="navSearchInput" aria-label="Search documentation navigation" placeholder="Search documentation" oninput="filterNavigation(this.value)" />
+      </label>
+    </div>
+
+    <div class="sidebar-scroll" style="flex: 1; overflow-y: auto; padding: 8px 6px 18px;" id="sidebarNavContainer">
+      
+      <div class="sidebar-group" data-group="Start here">
+        <div data-slot="sidebar-group-label" style="padding: 10px 12px 6px; color: #77869b; font-size: 9px; text-transform: uppercase; letter-spacing: .14em; font-weight: 800;">Start here</div>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+    
+        <li style="margin: 2px 0;">
+          <a data-slot="sidebar-menu-button" 
+             data-active="false" 
+             data-title="overview"
+             class="" 
+             href="../../index.html" 
+             style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            <span>Overview</span>
+          </a>
+        </li>
+      
+        <li style="margin: 2px 0;">
+          <a data-slot="sidebar-menu-button" 
+             data-active="true" 
+             data-title="upgrade so"
+             class="featured-nav-item" 
+             href="../../docs/upgrade-scriptable-object/index.html" 
+             style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+            <span>Upgrade SO</span>
+          </a>
+        </li>
+      
+        <li style="margin: 2px 0;">
+          <a data-slot="sidebar-menu-button" 
+             data-active="false" 
+             data-title="installation"
+             class="" 
+             href="../../docs/installation-and-requirements/index.html" 
+             style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            <span>Installation</span>
+          </a>
+        </li>
+      
+        <li style="margin: 2px 0;">
+          <a data-slot="sidebar-menu-button" 
+             data-active="false" 
+             data-title="quick start"
+             class="" 
+             href="../../docs/quick-start/index.html" 
+             style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            <span>Quick Start</span>
+          </a>
+        </li>
+      </ul></div>
+      <div class="sidebar-group" data-group="Core components">
+        <div data-slot="sidebar-group-label" style="padding: 10px 12px 6px; color: #77869b; font-size: 9px; text-transform: uppercase; letter-spacing: .14em; font-weight: 800;">Core components</div>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+    
+        <li style="margin: 2px 0;">
+          <a data-slot="sidebar-menu-button" 
+             data-active="false" 
+             data-title="currency so"
+             class="" 
+             href="../../docs/currency-scriptable-object/index.html" 
+             style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            <span>Currency SO</span>
+          </a>
+        </li>
+      
+        <li style="margin: 2px 0;">
+          <a data-slot="sidebar-menu-button" 
+             data-active="false" 
+             data-title="economy handler"
+             class="" 
+             href="../../docs/upgrade-economy-handler/index.html" 
+             style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            <span>Economy Handler</span>
+          </a>
+        </li>
+      
+        <li style="margin: 2px 0;">
+          <a data-slot="sidebar-menu-button" 
+             data-active="false" 
+             data-title="info provider"
+             class="" 
+             href="../../docs/upgrade-info-provider/index.html" 
+             style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            <span>Info Provider</span>
+          </a>
+        </li>
+      
+        <li style="margin: 2px 0;">
+          <a data-slot="sidebar-menu-button" 
+             data-active="false" 
+             data-title="listeners & events"
+             class="" 
+             href="../../docs/listeners-and-events/index.html" 
+             style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            <span>Listeners & Events</span>
+          </a>
+        </li>
+      </ul></div>
+      <div class="sidebar-group" data-group="Editor & workflows">
+        <div data-slot="sidebar-group-label" style="padding: 10px 12px 6px; color: #77869b; font-size: 9px; text-transform: uppercase; letter-spacing: .14em; font-weight: 800;">Editor & workflows</div>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+    
+        <li style="margin: 2px 0;">
+          <a data-slot="sidebar-menu-button" 
+             data-active="false" 
+             data-title="framework settings"
+             class="" 
+             href="../../docs/framework-settings/index.html" 
+             style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            <span>Framework Settings</span>
+          </a>
+        </li>
+      
+        <li style="margin: 2px 0;">
+          <a data-slot="sidebar-menu-button" 
+             data-active="false" 
+             data-title="saving & runtime state"
+             class="" 
+             href="../../docs/saving-and-runtime-state/index.html" 
+             style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            <span>Saving & Runtime State</span>
+          </a>
+        </li>
+      
+        <li style="margin: 2px 0;">
+          <a data-slot="sidebar-menu-button" 
+             data-active="false" 
+             data-title="connecting components"
+             class="" 
+             href="../../docs/connecting-components/index.html" 
+             style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            <span>Connecting Components</span>
+          </a>
+        </li>
+      
+        <li style="margin: 2px 0;">
+          <a data-slot="sidebar-menu-button" 
+             data-active="false" 
+             data-title="data & distributions"
+             class="" 
+             href="../../docs/data-generation-and-distributions/index.html" 
+             style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            <span>Data & Distributions</span>
+          </a>
+        </li>
+      
+        <li style="margin: 2px 0;">
+          <a data-slot="sidebar-menu-button" 
+             data-active="false" 
+             data-title="common workflows"
+             class="" 
+             href="../../docs/common-workflows/index.html" 
+             style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            <span>Common Workflows</span>
+          </a>
+        </li>
+      </ul></div>
+      <div class="sidebar-group" data-group="Reference & support">
+        <div data-slot="sidebar-group-label" style="padding: 10px 12px 6px; color: #77869b; font-size: 9px; text-transform: uppercase; letter-spacing: .14em; font-weight: 800;">Reference & support</div>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+    
+        <li style="margin: 2px 0;">
+          <a data-slot="sidebar-menu-button" 
+             data-active="false" 
+             data-title="troubleshooting"
+             class="" 
+             href="../../docs/troubleshooting-and-validation/index.html" 
+             style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            <span>Troubleshooting</span>
+          </a>
+        </li>
+      
+        <li style="margin: 2px 0;">
+          <a data-slot="sidebar-menu-button" 
+             data-active="false" 
+             data-title="faq & support"
+             class="" 
+             href="../../docs/faq-and-support/index.html" 
+             style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            <span>FAQ & Support</span>
+          </a>
+        </li>
+      
+        <li style="margin: 2px 0;">
+          <a data-slot="sidebar-menu-button" 
+             data-active="false" 
+             data-title="upgrade api"
+             class="" 
+             href="../../docs/upgrade-api/index.html" 
+             style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            <span>Upgrade API</span>
+          </a>
+        </li>
+      
+        <li style="margin: 2px 0;">
+          <a data-slot="sidebar-menu-button" 
+             data-active="false" 
+             data-title="currency api"
+             class="" 
+             href="../../docs/currency-api/index.html" 
+             style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            <span>Currency API</span>
+          </a>
+        </li>
+      
+        <li style="margin: 2px 0;">
+          <a data-slot="sidebar-menu-button" 
+             data-active="false" 
+             data-title="economy & info api"
+             class="" 
+             href="../../docs/economy-and-info-api/index.html" 
+             style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            <span>Economy & Info API</span>
+          </a>
+        </li>
+      </ul></div>
+      <p class="no-search-results" id="noSearchResults" style="display: none; padding: 18px; color: #6f7d90; font-size: 11px;">No matching page.</p>
+    </div>
+
+    <div class="sidebar-footer">
+      <span><i class="status-dot"></i> Documentation v1.0.0</span>
+      <small>The Complete Progression Foundation for Unity</small>
+    </div>
+  </aside>
+
+  <!-- Main Content Shell -->
+  <div class="docs-main-shell" style="flex: 1; min-width: 0; display: flex; flex-direction: column; background: var(--canvas);">
+    <header class="docs-topbar">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <button class="sidebar-toggle-btn" onclick="toggleMobileSidebar()" aria-label="Toggle documentation navigation">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg>
+        </button>
+        <span>Ultimate Progression Framework System</span>
+      </div>
+      <span class="version-pill">v1.0.0</span>
+    </header>
+
+    <div class="docs-layout">
+      <article class="docs-article">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="../../index.html">Documentation</a>
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          <span>Core Manual</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          <strong>Upgrade SO</strong>
+        </nav>
+
+        <header class="page-header">
+          <div class="page-meta">
+            <span class="primary-badge">Main component</span>
+            <span>Core Manual</span>
+          </div>
+          <h1>Upgrade ScriptableObject</h1>
+          <p>The Upgrade ScriptableObject is the foundation of UPFS. It defines progression structure, levels, values, prices, milestones, distributions and runtime state in one reusable data asset.</p>
+        </header>
+
+        
+    <figure class="doc-figure">
+      <div class="doc-image-frame">
+        <img src="../../images/upgrade/upgrade-so-overview.png" alt="Complete Upgrade ScriptableObject Inspector" loading="eager" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="image-placeholder" style="display: none;" role="img" aria-label="Complete Upgrade ScriptableObject Inspector placeholder">
+          <span class="placeholder-icon"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg></span>
+          <strong>Complete Upgrade SO Inspector</strong>
+          <code>images/upgrade/upgrade-so-overview.png</code>
+          <small>Recommended: 1200 × 1800 PNG</small>
+        </div>
+      </div>
+      <figcaption>The Upgrade Inspector organizes the complete progression workflow into six focused sections.</figcaption>
+    </figure>
+  
+
+        <section class="doc-section" id="mental-model"><span class="section-eyebrow">Before you begin</span><h2>The progression model</h2><p class="section-summary">UPFS organizes progression into Big Upgrade groups containing sequential Small Upgrades.</p><p>A Small Upgrade represents one purchasable or unlockable progression step. It stores a level, gameplay value, price and completion state.</p><p>A Big Upgrade groups related Small Upgrades into a milestone. Groups make long progressions easier to author, display and react to without changing the sequential runtime model.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Element</th><th>Purpose</th><th>Example</th></tr></thead>
+          <tbody>
+            
+              <tr><td>Upgrade SO</td><td>Owns the complete progression</td><td>Weapon Power</td></tr>
+            
+              <tr><td>Big Upgrade</td><td>Groups a progression milestone</td><td>Steel Tier</td></tr>
+            
+              <tr><td>Small Upgrade</td><td>Represents one sequential step</td><td>Level 4 → Level 5</td></tr>
+            
+          </tbody>
+        </table>
+      </div>
+    
+      <aside class="doc-callout important">
+        <strong>Important · Sequential by design</strong>
+        <p>PerformUpgrade advances the first incomplete Small Upgrade. UPFS does not skip incomplete steps inside the standard Upgrade SO workflow.</p>
+      </aside>
+    </section><section class="doc-section" id="create-upgrade"><h2>Create an Upgrade asset</h2><p class="section-summary">Create the main progression asset directly from Unity's Project window.</p><ol class="step-list">
+        <li>
+          <span>01</span>
+          <div><strong>Open the Create menu</strong><p>Right-click inside the Project window.</p></div>
+        </li>
+      
+        <li>
+          <span>02</span>
+          <div><strong>Choose the UPFS asset</strong><p>Select Bcyly Labs › Ultimate Progression Framework › Upgrade.</p></div>
+        </li>
+      
+        <li>
+          <span>03</span>
+          <div><strong>Name the asset</strong><p>Use a stable, descriptive name such as WeaponPower_Upgrade.</p></div>
+        </li>
+      
+        <li>
+          <span>04</span>
+          <div><strong>Configure the structure</strong><p>Open Upgrade Settings, then use Auto Generate Data or build the list manually.</p></div>
+        </li>
+      </ol>
+      <aside class="doc-callout tip">
+        <strong>Tip · Use one responsibility per asset</strong>
+        <p>Create separate Upgrade assets for independent progressions such as Weapon Power, Storage Capacity and Player Level.</p>
+      </aside>
+    </section><section class="doc-section" id="upgrade-settings"><span class="section-eyebrow">Inspector section</span><h2>1. Upgrade Settings</h2><p class="section-summary">Defines the identity, group structure and Big Upgrade milestone trigger behavior.</p><p>Upgrade Name identifies the progression at runtime and is currently used as part of its PlayerPrefs save key. Small Upgrades Per Big Upgrade establishes the default group size used by the data generator.</p><p>Big Upgrade Trigger Mode determines whether a Big Upgrade event is raised when a group begins or when its final Small Upgrade is completed.</p>
+    <figure class="doc-figure">
+      <div class="doc-image-frame">
+        <img src="../../images/upgrade/upgrade-settings.png" alt="Upgrade Settings section" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="image-placeholder" style="display: none;" role="img" aria-label="Upgrade Settings section placeholder">
+          <span class="placeholder-icon"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg></span>
+          <strong>Upgrade Settings</strong>
+          <code>images/upgrade/upgrade-settings.png</code>
+          <small>Recommended: 1400px wide PNG</small>
+        </div>
+      </div>
+      <figcaption>Upgrade Settings controls progression identity, default group size and milestone timing.</figcaption>
+    </figure>
+  
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Control</th><th>Purpose</th><th>Guidance</th></tr></thead>
+          <tbody>
+            
+              <tr><td>Upgrade Name</td><td>Human-readable progression identity and save-key input</td><td>Keep it unique and avoid renaming after release</td></tr>
+            
+              <tr><td>Small Upgrades Per Big Upgrade</td><td>Default number of steps in each generated group</td><td>Choose a size that matches the intended milestone rhythm</td></tr>
+            
+              <tr><td>On First Small Upgrade</td><td>Raises the Big Upgrade event when a group starts</td><td>Useful for entering a new tier</td></tr>
+            
+              <tr><td>On Last Small Upgrade</td><td>Raises the Big Upgrade event when a group completes</td><td>Useful for milestone rewards</td></tr>
+            
+          </tbody>
+        </table>
+      </div>
+    
+      <aside class="doc-callout warning">
+        <strong>Warning · Save-key stability</strong>
+        <p>Changing Upgrade Name changes the current PlayerPrefs key. Finalize stable names before shipping persistent player data.</p>
+      </aside>
+    </section><section class="doc-section" id="base-values"><span class="section-eyebrow">Inspector section</span><h2>2. Base Values</h2><p class="section-summary">Defines the state returned before the first standard upgrade has been completed.</p><p>Base Values provide the starting level, gameplay value and price when the progression has no purchased Small Upgrade. This makes the current-state API useful from the first frame.</p><p>When Consider First Upgrade As Base Value is enabled, the first Small Upgrade is silently marked as the base state. Gameplay events are not fired for this automatic initialization.</p>
+    <figure class="doc-figure">
+      <div class="doc-image-frame">
+        <img src="../../images/upgrade/base-values.png" alt="Upgrade Base Values section" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="image-placeholder" style="display: none;" role="img" aria-label="Upgrade Base Values section placeholder">
+          <span class="placeholder-icon"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg></span>
+          <strong>Base Values</strong>
+          <code>images/upgrade/base-values.png</code>
+          <small>Recommended: 1400px wide PNG</small>
+        </div>
+      </div>
+      <figcaption>Base Values establish the authored starting state before normal progression begins.</figcaption>
+    </figure>
+  <div class="subsection-grid">
+        <article>
+          <h3>Separate base values</h3>
+          <p>Use the dedicated Base Values fields when level zero or an unpurchased state exists outside the generated upgrade list.</p>
+          
+        </article>
+      
+        <article>
+          <h3>First upgrade as base</h3>
+          <p>Use the first generated entry as the initial state when every meaningful state should live inside one continuous list.</p>
+          
+        </article>
+      </div>
+      <aside class="doc-callout info">
+        <strong>Information · No gameplay event on initialization</strong>
+        <p>The first entry is applied as a base without invoking Small Upgrade, Big Upgrade or Any Upgrade events.</p>
+      </aside>
+    </section><section class="doc-section" id="auto-generate-data"><span class="section-eyebrow">Inspector section</span><h2>3. Auto Generate Data</h2><p class="section-summary">Builds a complete progression from structure, value, price and distribution settings.</p><p>The generator is the fastest way to author consistent upgrade data. Define the number of groups and steps, then choose start/end ranges for gameplay values and prices.</p><p>Value and price distributions are independent. A progression can use smooth value growth with aggressive exponential cost scaling, or any other supported pairing.</p>
+    <figure class="doc-figure">
+      <div class="doc-image-frame">
+        <img src="../../images/upgrade/auto-generate-data.png" alt="Auto Generate Data section" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="image-placeholder" style="display: none;" role="img" aria-label="Auto Generate Data section placeholder">
+          <span class="placeholder-icon"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg></span>
+          <strong>Auto Generate Data</strong>
+          <code>images/upgrade/auto-generate-data.png</code>
+          <small>Recommended: 1400px wide PNG</small>
+        </div>
+      </div>
+      <figcaption>The generator creates nested upgrade data and applies independent value and price distributions.</figcaption>
+    </figure>
+  
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Distribution</th><th>Behavior</th><th>Typical use</th></tr></thead>
+          <tbody>
+            
+              <tr><td>Linear</td><td>Even change from start to end</td><td>Predictable level progression</td></tr>
+            
+              <tr><td>Exponential / Ease In</td><td>Slower early, faster late growth</td><td>Long-term price scaling</td></tr>
+            
+              <tr><td>Logarithmic / Ease Out</td><td>Fast early gains that gradually flatten</td><td>Early player acceleration</td></tr>
+            
+              <tr><td>Ease In Out</td><td>Smooth S-curve</td><td>Balanced middle-focused progression</td></tr>
+            
+              <tr><td>Random</td><td>Value selected from configured bounds</td><td>Authored variation</td></tr>
+            
+              <tr><td>Step</td><td>Keeps the starting value</td><td>Flat values with separate cost growth</td></tr>
+            
+              <tr><td>Custom Curve</td><td>Evaluates an AnimationCurve</td><td>Fully authored progression shape</td></tr>
+            
+          </tbody>
+        </table>
+      </div>
+    
+      <aside class="doc-callout warning">
+        <strong>Warning · Regeneration replaces authored structure</strong>
+        <p>Review the Inspector confirmation before generating over existing Big and Small Upgrade data.</p>
+      </aside>
+    </section><section class="doc-section" id="current-upgrade"><span class="section-eyebrow">Inspector section</span><h2>4. Current Upgrade</h2><p class="section-summary">Displays and tests the live progression state without searching through nested data.</p><p>Current Upgrade provides an immediate view of the active level, value and progression status. It is useful while balancing data and while testing persistence in Play Mode.</p><p>The runtime API exposes the same state through GetCurrentUpgrade, GetNextUpgrade, GetOverallUpgradeProgress and GetCurrentBigUpgradeProgress.</p>
+    <figure class="doc-figure">
+      <div class="doc-image-frame">
+        <img src="../../images/upgrade/current-upgrade.png" alt="Current Upgrade section" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="image-placeholder" style="display: none;" role="img" aria-label="Current Upgrade section placeholder">
+          <span class="placeholder-icon"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg></span>
+          <strong>Current Upgrade</strong>
+          <code>images/upgrade/current-upgrade.png</code>
+          <small>Recommended: 1400px wide PNG</small>
+        </div>
+      </div>
+      <figcaption>Current Upgrade summarizes active data and normalized progression at a glance.</figcaption>
+    </figure>
+  <ul class="doc-bullets"><li>Current Small Upgrade level and gameplay value</li><li>Next available upgrade and cost</li><li>Progress inside the active Big Upgrade group</li><li>Overall progress across the complete asset</li><li>Fully upgraded state</li></ul>
+      <aside class="doc-callout tip">
+        <strong>Tip · Testing workflow</strong>
+        <p>Use a copy of production data when manually advancing progression in the Inspector during development.</p>
+      </aside>
+    </section><section class="doc-section" id="big-upgrades"><span class="section-eyebrow">Inspector section</span><h2>5. Big Upgrades</h2><p class="section-summary">Provides direct control over every group and individual progression step.</p><p>Each Big Upgrade contains a name and a nested list of Small Upgrades. Each Small Upgrade stores completion state, level, value and the native upgrade price.</p><p>Use this section to review generated data, fine-tune individual entries, add special milestone values or manually construct a progression that does not follow one mathematical curve.</p>
+    <figure class="doc-figure">
+      <div class="doc-image-frame">
+        <img src="../../images/upgrade/big-upgrades.png" alt="Big Upgrades list section" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="image-placeholder" style="display: none;" role="img" aria-label="Big Upgrades list section placeholder">
+          <span class="placeholder-icon"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg></span>
+          <strong>Big Upgrades</strong>
+          <code>images/upgrade/big-upgrades.png</code>
+          <small>Recommended: 1400px wide PNG</small>
+        </div>
+      </div>
+      <figcaption>Big Upgrades exposes the complete nested progression with focused add, edit and delete controls.</figcaption>
+    </figure>
+  
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Small Upgrade field</th><th>Runtime meaning</th></tr></thead>
+          <tbody>
+            
+              <tr><td>Is Upgraded</td><td>Whether this step has been completed</td></tr>
+            
+              <tr><td>Upgrade Level</td><td>Level identifier presented to gameplay and UI</td></tr>
+            
+              <tr><td>Upgrade Value</td><td>Gameplay value associated with this state</td></tr>
+            
+              <tr><td>Upgrade Price</td><td>Native single-price value stored by Upgrade SO</td></tr>
+            
+          </tbody>
+        </table>
+      </div>
+    
+      <aside class="doc-callout important">
+        <strong>Important · Use Economy Handler for multi-currency costs</strong>
+        <p>Upgrade Price is the native integer price. Connect an Upgrade Economy Handler when the progression requires multiple currencies or payment modes.</p>
+      </aside>
+    </section><section class="doc-section" id="save-and-data"><span class="section-eyebrow">Inspector section</span><h2>6. Save & Data</h2><p class="section-summary">Controls PlayerPrefs persistence, loading, resets and development-time data actions.</p><p>Upgrade SO serializes its Big Upgrade data to JSON and stores it in PlayerPrefs. PerformUpgrade automatically saves after a successful progression step.</p><p>Load restores the saved structure and completion state. Reset deletes the asset's save key, clears completed states and reapplies the first entry when it is configured as the base value.</p>
+    <figure class="doc-figure">
+      <div class="doc-image-frame">
+        <img src="../../images/upgrade/save-and-data.png" alt="Upgrade Save and Data section" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="image-placeholder" style="display: none;" role="img" aria-label="Upgrade Save and Data section placeholder">
+          <span class="placeholder-icon"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg></span>
+          <strong>Save & Data</strong>
+          <code>images/upgrade/save-and-data.png</code>
+          <small>Recommended: 1400px wide PNG</small>
+        </div>
+      </div>
+      <figcaption>Save & Data provides explicit development controls around the automatic persistence lifecycle.</figcaption>
+    </figure>
+  
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Action / Setting</th><th>Result</th></tr></thead>
+          <tbody>
+            
+              <tr><td>Save</td><td>Writes current Big Upgrade data to PlayerPrefs</td></tr>
+            
+              <tr><td>Load</td><td>Replaces runtime data with the stored JSON data</td></tr>
+            
+              <tr><td>Reset Save</td><td>Deletes the key and clears completion state</td></tr>
+            
+              <tr><td>Reset on PlayerPrefs Cleared</td><td>Clears progression when no save key is found</td></tr>
+            
+          </tbody>
+        </table>
+      </div>
+    
+      <aside class="doc-callout warning">
+        <strong>Warning · Current persistence scope</strong>
+        <p>UPFS includes PlayerPrefs persistence for its core assets. Cloud storage and third-party save integrations are not built-in features of this version.</p>
+      </aside>
+    </section><section class="doc-section" id="runtime-flow"><h2>Runtime upgrade flow</h2><p class="section-summary">One successful PerformUpgrade call updates state, raises events and saves the progression.</p><ol class="step-list">
+        <li>
+          <span>01</span>
+          <div><strong>Find next step</strong><p>UPFS scans Big Upgrades in order and selects the first incomplete Small Upgrade.</p></div>
+        </li>
+      
+        <li>
+          <span>02</span>
+          <div><strong>Complete state</strong><p>The selected Small Upgrade is marked as upgraded.</p></div>
+        </li>
+      
+        <li>
+          <span>03</span>
+          <div><strong>Build event context</strong><p>Detailed data includes Small and Big Upgrade references plus local and global indices.</p></div>
+        </li>
+      
+        <li>
+          <span>04</span>
+          <div><strong>Raise events</strong><p>Any Upgrade and detailed events fire, followed by the configured Small or Big milestone event.</p></div>
+        </li>
+      
+        <li>
+          <span>05</span>
+          <div><strong>Check completion</strong><p>The Fully Upgraded event fires when no next entry remains.</p></div>
+        </li>
+      
+        <li>
+          <span>06</span>
+          <div><strong>Persist</strong><p>The updated data is saved to PlayerPrefs.</p></div>
+        </li>
+      </ol>
+      <div class="code-block">
+        <div class="code-header"><span>csharp</span></div>
+        <pre><code>public class WeaponUpgradeController : MonoBehaviour
+{
+    [SerializeField] private Upgrade weaponPower;
+
+    public void UpgradePower()
+    {
+        if (!weaponPower.IsFullyUpgraded())
+            weaponPower.PerformUpgrade();
+    }
+}</code></pre>
+      </div>
+    </section><section class="doc-section" id="essential-api"><h2>Essential Upgrade API</h2><p class="section-summary">The most commonly used runtime calls for reading and advancing progression.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Member</th><th>Returns</th><th>Purpose</th></tr></thead>
+          <tbody>
+            
+              <tr><td>PerformUpgrade()</td><td>bool</td><td>Completes the next sequential Small Upgrade</td></tr>
+            
+              <tr><td>GetCurrentUpgrade()</td><td>SmallUpgrade</td><td>Returns the current state or base values</td></tr>
+            
+              <tr><td>GetNextUpgrade()</td><td>SmallUpgrade</td><td>Returns the next incomplete step</td></tr>
+            
+              <tr><td>GetSmallUpgradeByIndex(index)</td><td>SmallUpgrade</td><td>Reads an entry by zero-based global index</td></tr>
+            
+              <tr><td>GetUpgradedSmallCount()</td><td>int</td><td>Returns the sequential completed count</td></tr>
+            
+              <tr><td>GetOverallUpgradeProgress()</td><td>float</td><td>Returns normalized total progress</td></tr>
+            
+              <tr><td>IsFullyUpgraded()</td><td>bool</td><td>Checks whether all entries are complete</td></tr>
+            
+          </tbody>
+        </table>
+      </div>
+    
+      <aside class="doc-callout info">
+        <strong>Information · Complete reference</strong>
+        <p>See Upgrade API Reference for all methods, events, nested data types and return behavior.</p>
+      </aside>
+    </section>
+
+        <nav class="page-pagination" aria-label="Documentation page navigation">
+          <span></span>
+
+          
+            <a class="page-link next" href="../../docs/installation-and-requirements/index.html">
+              <span>
+                <small>Next</small>
+                <strong>Installation</strong>
+              </span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+          
+        </nav>
+      </article>
+
+      <aside class="table-of-contents" aria-label="On this page">
+        <strong>On this page</strong>
+        <nav>
+          <a href="#mental-model">The progression model</a><a href="#create-upgrade">Create an Upgrade asset</a><a href="#upgrade-settings">1. Upgrade Settings</a><a href="#base-values">2. Base Values</a><a href="#auto-generate-data">3. Auto Generate Data</a><a href="#current-upgrade">4. Current Upgrade</a><a href="#big-upgrades">5. Big Upgrades</a><a href="#save-and-data">6. Save & Data</a><a href="#runtime-flow">Runtime upgrade flow</a><a href="#essential-api">Essential Upgrade API</a>
+        </nav>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    function toggleMobileSidebar() {
+      const sidebar = document.getElementById('docsSidebar');
+      const overlay = document.getElementById('sidebarOverlay');
+      sidebar.classList.toggle('open');
+      overlay.classList.toggle('active');
+    }
+
+    function filterNavigation(query) {
+      const q = query.trim().toLowerCase();
+      const items = document.querySelectorAll('#sidebarNavContainer [data-slot="sidebar-menu-button"]');
+      const groups = document.querySelectorAll('#sidebarNavContainer .sidebar-group');
+      let visibleCount = 0;
+
+      items.forEach(btn => {
+        const title = btn.getAttribute('data-title') || '';
+        const match = !q || title.includes(q);
+        const li = btn.closest('li');
+        if (li) li.style.display = match ? 'block' : 'none';
+        if (match) visibleCount++;
+      });
+
+      groups.forEach(group => {
+        const visibleItemsInGroup = group.querySelectorAll('li:not([style*="display: none"])');
+        group.style.display = visibleItemsInGroup.length > 0 ? 'block' : 'none';
+      });
+
+      const noResults = document.getElementById('noSearchResults');
+      if (noResults) {
+        noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+      }
+    }
+  </script>
+</body>
+</html>

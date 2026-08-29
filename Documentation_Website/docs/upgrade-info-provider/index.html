@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upgrade Info Provider | UPFS Documentation</title>
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+  <link rel="stylesheet" href="../../assets/style.css" />
+</head>
+<body style="margin: 0; background: var(--canvas); color: var(--text); min-height: 100vh; display: flex;">
+
+  <!-- Sidebar Mobile Backdrop -->
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMobileSidebar()"></div>
+
+  <!-- Sidebar -->
+  <aside class="docs-sidebar" id="docsSidebar" style="width: var(--sidebar-width); flex-shrink: 0; height: 100vh; position: sticky; top: 0; background: var(--navy-900); border-right: 1px solid var(--sidebar-border); display: flex; flex-direction: column;">
+    <div class="sidebar-brand-area" style="padding: 18px 14px 12px; border-bottom: 1px solid #293344;">
+      <a class="brand-lockup sidebar-brand" href="../../index.html" style="color: #fff; margin-bottom: 15px;">
+        <span class="brand-mark"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg></span>
+        <span><strong>UPFS</strong><small>Documentation</small></span>
+      </a>
+      <label class="sidebar-search">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input id="navSearchInput" aria-label="Search documentation navigation" placeholder="Search documentation" oninput="filterNavigation(this.value)" />
+      </label>
+    </div>
+
+    <div class="sidebar-scroll" style="flex: 1; overflow-y: auto; padding: 8px 6px 18px;" id="sidebarNavContainer">
+      
+      <div class="sidebar-group" data-group="Start here">
+        <div data-slot="sidebar-group-label" style="padding: 10px 12px 6px; color: #77869b; font-size: 9px; text-transform: uppercase; letter-spacing: .14em; font-weight: 800;">Start here</div>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+    
+        <li style="margin: 2px 0;">
+          <a data-slot="sidebar-menu-button" 
+             data-active="false" 
+             data-title="overview"
+             class="" 
+             href="../../index.html" 
+             style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            <span>Overview</span>
+          </a>
+        </li>
+      
+        <li style="margin: 2px 0;">
+          <a data-slot="sidebar-menu-button" 
+             data-active="false" 
+             data-title="upgrade so"
+             class="featured-nav-item" 
+             href="../../docs/upgrade-scriptable-object/index.html" 
+             style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+            <span>Upgrade SO</span>
+          </a>
+        </li>
+      
+        <li style="margin: 2px 0;">
+          <a data-slot="sidebar-menu-button" 
+             data-active="false" 
+             data-title="installation"
+             class="" 
+             href="../../docs/installation-and-requirements/index.html" 
+             style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            <span>Installation</span>
+          </a>
+        </li>
+      
+        <li style="margin: 2px 0;">
+          <a data-slot="sidebar-menu-button" 
+             data-active="false" 
+             data-title="quick start"
+             class="" 
+             href="../../docs/quick-start/index.html" 
+             style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            <span>Quick Start</span>
+          </a>
+        </li>
+      </ul></div>
+      <div class="sidebar-group" data-group="Core components">
+        <div data-slot="sidebar-group-label" style="padding: 10px 12px 6px; color: #77869b; font-size: 9px; text-transform: uppercase; letter-spacing: .14em; font-weight: 800;">Core components</div>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+    
+        <li style="margin: 2px 0;">
+          <a data-slot="sidebar-menu-button" 
+             data-active="false" 
+             data-title="currency so"
+             class="" 
+             href="../../docs/currency-scriptable-object/index.html" 
+             style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            <span>Currency SO</span>
+          </a>
+        </li>
+      
+        <li style="margin: 2px 0;">
+          <a data-slot="sidebar-menu-button" 
+             data-active="false" 
+             data-title="economy handler"
+             class="" 
+             href="../../docs/upgrade-economy-handler/index.html" 
+             style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            <span>Economy Handler</span>
+          </a>
+        </li>
+      
+        <li style="margin: 2px 0;">
+          <a data-slot="sidebar-menu-button" 
+             data-active="true" 
+             data-title="info provider"
+             class="" 
+             href="../../docs/upgrade-info-provider/index.html" 
+             style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            <span>Info Provider</span>
+          </a>
+        </li>
+      
+        <li style="margin: 2px 0;">
+          <a data-slot="sidebar-menu-button" 
+             data-active="false" 
+             data-title="listeners & events"
+             class="" 
+             href="../../docs/listeners-and-events/index.html" 
+             style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            <span>Listeners & Events</span>
+          </a>
+        </li>
+      </ul></div>
+      <div class="sidebar-group" data-group="Editor & workflows">
+        <div data-slot="sidebar-group-label" style="padding: 10px 12px 6px; color: #77869b; font-size: 9px; text-transform: uppercase; letter-spacing: .14em; font-weight: 800;">Editor & workflows</div>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+    
+        <li style="margin: 2px 0;">
+          <a data-slot="sidebar-menu-button" 
+             data-active="false" 
+             data-title="framework settings"
+             class="" 
+             href="../../docs/framework-settings/index.html" 
+             style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            <span>Framework Settings</span>
+          </a>
+        </li>
+      
+        <li style="margin: 2px 0;">
+          <a data-slot="sidebar-menu-button" 
+             data-active="false" 
+             data-title="saving & runtime state"
+             class="" 
+             href="../../docs/saving-and-runtime-state/index.html" 
+             style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            <span>Saving & Runtime State</span>
+          </a>
+        </li>
+      
+        <li style="margin: 2px 0;">
+          <a data-slot="sidebar-menu-button" 
+             data-active="false" 
+             data-title="connecting components"
+             class="" 
+             href="../../docs/connecting-components/index.html" 
+             style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            <span>Connecting Components</span>
+          </a>
+        </li>
+      
+        <li style="margin: 2px 0;">
+          <a data-slot="sidebar-menu-button" 
+             data-active="false" 
+             data-title="data & distributions"
+             class="" 
+             href="../../docs/data-generation-and-distributions/index.html" 
+             style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            <span>Data & Distributions</span>
+          </a>
+        </li>
+      
+        <li style="margin: 2px 0;">
+          <a data-slot="sidebar-menu-button" 
+             data-active="false" 
+             data-title="common workflows"
+             class="" 
+             href="../../docs/common-workflows/index.html" 
+             style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            <span>Common Workflows</span>
+          </a>
+        </li>
+      </ul></div>
+      <div class="sidebar-group" data-group="Reference & support">
+        <div data-slot="sidebar-group-label" style="padding: 10px 12px 6px; color: #77869b; font-size: 9px; text-transform: uppercase; letter-spacing: .14em; font-weight: 800;">Reference & support</div>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+    
+        <li style="margin: 2px 0;">
+          <a data-slot="sidebar-menu-button" 
+             data-active="false" 
+             data-title="troubleshooting"
+             class="" 
+             href="../../docs/troubleshooting-and-validation/index.html" 
+             style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            <span>Troubleshooting</span>
+          </a>
+        </li>
+      
+        <li style="margin: 2px 0;">
+          <a data-slot="sidebar-menu-button" 
+             data-active="false" 
+             data-title="faq & support"
+             class="" 
+             href="../../docs/faq-and-support/index.html" 
+             style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            <span>FAQ & Support</span>
+          </a>
+        </li>
+      
+        <li style="margin: 2px 0;">
+          <a data-slot="sidebar-menu-button" 
+             data-active="false" 
+             data-title="upgrade api"
+             class="" 
+             href="../../docs/upgrade-api/index.html" 
+             style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            <span>Upgrade API</span>
+          </a>
+        </li>
+      
+        <li style="margin: 2px 0;">
+          <a data-slot="sidebar-menu-button" 
+             data-active="false" 
+             data-title="currency api"
+             class="" 
+             href="../../docs/currency-api/index.html" 
+             style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            <span>Currency API</span>
+          </a>
+        </li>
+      
+        <li style="margin: 2px 0;">
+          <a data-slot="sidebar-menu-button" 
+             data-active="false" 
+             data-title="economy & info api"
+             class="" 
+             href="../../docs/economy-and-info-api/index.html" 
+             style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            <span>Economy & Info API</span>
+          </a>
+        </li>
+      </ul></div>
+      <p class="no-search-results" id="noSearchResults" style="display: none; padding: 18px; color: #6f7d90; font-size: 11px;">No matching page.</p>
+    </div>
+
+    <div class="sidebar-footer">
+      <span><i class="status-dot"></i> Documentation v1.0.0</span>
+      <small>The Complete Progression Foundation for Unity</small>
+    </div>
+  </aside>
+
+  <!-- Main Content Shell -->
+  <div class="docs-main-shell" style="flex: 1; min-width: 0; display: flex; flex-direction: column; background: var(--canvas);">
+    <header class="docs-topbar">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <button class="sidebar-toggle-btn" onclick="toggleMobileSidebar()" aria-label="Toggle documentation navigation">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg>
+        </button>
+        <span>Ultimate Progression Framework System</span>
+      </div>
+      <span class="version-pill">v1.0.0</span>
+    </header>
+
+    <div class="docs-layout">
+      <article class="docs-article">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="../../index.html">Documentation</a>
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          <span>Core Components</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          <strong>Info Provider</strong>
+        </nav>
+
+        <header class="page-header">
+          <div class="page-meta">
+            
+            <span>Core Components</span>
+          </div>
+          <h1>Upgrade Info Provider</h1>
+          <p>Upgrade Info Provider transforms Upgrade SO data into a UI-friendly information layer. Select the built-in fields your interface needs, add typed custom fields, and query one consistent source at runtime.</p>
+        </header>
+
+        
+    <figure class="doc-figure">
+      <div class="doc-image-frame">
+        <img src="../../images/info/info-provider-overview.png" alt="Complete Upgrade Info Provider Inspector" loading="eager" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="image-placeholder" style="display: none;" role="img" aria-label="Complete Upgrade Info Provider Inspector placeholder">
+          <span class="placeholder-icon"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg></span>
+          <strong>Complete Info Provider Inspector</strong>
+          <code>images/info/info-provider-overview.png</code>
+          <small>Recommended: 1200 × 1800 PNG</small>
+        </div>
+      </div>
+      <figcaption>The Info Provider Inspector separates source synchronization, field selection, custom definitions and fetched output.</figcaption>
+    </figure>
+  
+
+        <section class="doc-section" id="source-sync"><span class="section-eyebrow">Inspector section</span><h2>1. Upgrade Source & Sync</h2><p class="section-summary">Connects the provider to the authoritative Upgrade SO and controls synchronization.</p><p>Fetch Upgrade Info reads the nested Big and Small Upgrade structure and creates a presentation record for each step.</p><p>Use preserveExisting when refetching after structural edits if existing custom values should remain attached where possible.</p>
+    <figure class="doc-figure">
+      <div class="doc-image-frame">
+        <img src="../../images/info/upgrade-source-and-sync.png" alt="Info Provider Upgrade Source and Sync section" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="image-placeholder" style="display: none;" role="img" aria-label="Info Provider Upgrade Source and Sync section placeholder">
+          <span class="placeholder-icon"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg></span>
+          <strong>Upgrade Source & Sync</strong>
+          <code>images/info/upgrade-source-and-sync.png</code>
+          <small>Recommended: 1400px wide PNG</small>
+        </div>
+      </div>
+      <figcaption>Assign the Upgrade source and fetch its current structure before configuring presentation data.</figcaption>
+    </figure>
+  
+      <aside class="doc-callout warning">
+        <strong>Warning · Refetch after source changes</strong>
+        <p>When groups, levels or ordering change in Upgrade SO, refetch the provider before relying on indexed information at runtime.</p>
+      </aside>
+    </section><section class="doc-section" id="field-selection"><span class="section-eyebrow">Inspector section</span><h2>2. Field Selection</h2><p class="section-summary">Chooses which standard Upgrade fields are copied into the information layer.</p>
+    <figure class="doc-figure">
+      <div class="doc-image-frame">
+        <img src="../../images/info/field-selection.png" alt="Info Provider Field Selection section" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="image-placeholder" style="display: none;" role="img" aria-label="Info Provider Field Selection section placeholder">
+          <span class="placeholder-icon"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg></span>
+          <strong>Field Selection</strong>
+          <code>images/info/field-selection.png</code>
+          <small>Recommended: 1400px wide PNG</small>
+        </div>
+      </div>
+      <figcaption>Enable only the standard fields required by gameplay or UI consumers.</figcaption>
+    </figure>
+  <ul class="doc-bullets"><li>Big and Small Upgrade names and indices</li><li>Upgrade level, value and native price</li><li>Completion and current-state information</li><li>Fields used by cards, tooltips, previews and selection screens</li></ul>
+      <aside class="doc-callout tip">
+        <strong>Tip · Keep payloads intentional</strong>
+        <p>Select the fields your presentation layer actually uses. This keeps the Inspector easier to review and the data contract explicit.</p>
+      </aside>
+    </section><section class="doc-section" id="custom-fields"><span class="section-eyebrow">Inspector section</span><h2>3. Custom Field Definitions</h2><p class="section-summary">Adds project-specific presentation metadata without modifying Upgrade SO.</p>
+    <figure class="doc-figure">
+      <div class="doc-image-frame">
+        <img src="../../images/info/custom-field-definitions.png" alt="Info Provider Custom Field Definitions section" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="image-placeholder" style="display: none;" role="img" aria-label="Info Provider Custom Field Definitions section placeholder">
+          <span class="placeholder-icon"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg></span>
+          <strong>Custom Field Definitions</strong>
+          <code>images/info/custom-field-definitions.png</code>
+          <small>Recommended: 1400px wide PNG</small>
+        </div>
+      </div>
+      <figcaption>Custom fields provide typed metadata with explicit Small, Big or Both scopes.</figcaption>
+    </figure>
+  
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Field type</th><th>Typical purpose</th><th>Example</th></tr></thead>
+          <tbody>
+            
+              <tr><td>String</td><td>Labels and descriptions</td><td>Increases attack speed</td></tr>
+            
+              <tr><td>Int / Float</td><td>Additional numeric metadata</td><td>+15 or 1.25</td></tr>
+            
+              <tr><td>Color</td><td>Rarity and visual state</td><td>Legendary accent</td></tr>
+            
+              <tr><td>Sprite</td><td>Icons and badges</td><td>Tier emblem</td></tr>
+            
+              <tr><td>Material</td><td>Presentation material</td><td>Unlocked appearance</td></tr>
+            
+              <tr><td>Texture2D</td><td>Large art or previews</td><td>Upgrade artwork</td></tr>
+            
+          </tbody>
+        </table>
+      </div>
+    
+      <aside class="doc-callout info">
+        <strong>Information · Scope controls placement</strong>
+        <p>SmallOnly stores a value for individual steps, BigOnly stores a group-level value, and Both makes the definition available at both levels.</p>
+      </aside>
+    </section><section class="doc-section" id="fetched-data"><span class="section-eyebrow">Inspector section</span><h2>4. Fetched Upgrade Data</h2><p class="section-summary">Shows the synchronized presentation records and their custom values.</p>
+    <figure class="doc-figure">
+      <div class="doc-image-frame">
+        <img src="../../images/info/fetched-upgrade-data.png" alt="Info Provider Fetched Upgrade Data section" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="image-placeholder" style="display: none;" role="img" aria-label="Info Provider Fetched Upgrade Data section placeholder">
+          <span class="placeholder-icon"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg></span>
+          <strong>Fetched Upgrade Data</strong>
+          <code>images/info/fetched-upgrade-data.png</code>
+          <small>Recommended: 1400px wide PNG</small>
+        </div>
+      </div>
+      <figcaption>Review the fetched output to verify indices, selected fields and custom metadata before runtime.</figcaption>
+    </figure>
+  
+      <aside class="doc-callout important">
+        <strong>Important · Treat names and indices as authored contracts</strong>
+        <p>If runtime code queries by name or index, keep those identifiers stable or update consumers alongside the data.</p>
+      </aside>
+    </section><section class="doc-section" id="runtime-queries"><h2>Runtime queries</h2><p class="section-summary">Read the current, next or specifically indexed presentation record.</p><ul class="doc-bullets"><li>GetNextUpgradeInfo</li><li>GetUpgradeInfo by global or Big/Small index</li><li>GetAllInfoForBig and GetBigUpgradeInfo</li><li>GetCustomField and GetCustomFieldByIndex overloads</li><li>CheckDirty for synchronization monitoring</li></ul>
+      <div class="code-block">
+        <div class="code-header"><span>csharp</span></div>
+        <pre><code>UpgradeInfoProvider.SmallUpgradeInfo next =
++    infoProvider.GetNextUpgradeInfo();
+
+if (next != null)
+{
+    UpgradeInfoProvider.CustomFieldValue label =
++        infoProvider.GetCustomField(next, "display-name-tag");
+
+    Debug.Log(label.stringValue);
+}</code></pre>
+      </div>
+    </section>
+
+        <nav class="page-pagination" aria-label="Documentation page navigation">
+          
+            <a class="page-link previous" href="../../docs/upgrade-economy-handler/index.html">
+              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+              <span>
+                <small>Previous</small>
+                <strong>Economy Handler</strong>
+              </span>
+            </a>
+          
+
+          
+            <a class="page-link next" href="../../docs/listeners-and-events/index.html">
+              <span>
+                <small>Next</small>
+                <strong>Listeners & Events</strong>
+              </span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+          
+        </nav>
+      </article>
+
+      <aside class="table-of-contents" aria-label="On this page">
+        <strong>On this page</strong>
+        <nav>
+          <a href="#source-sync">1. Upgrade Source & Sync</a><a href="#field-selection">2. Field Selection</a><a href="#custom-fields">3. Custom Field Definitions</a><a href="#fetched-data">4. Fetched Upgrade Data</a><a href="#runtime-queries">Runtime queries</a>
+        </nav>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    function toggleMobileSidebar() {
+      const sidebar = document.getElementById('docsSidebar');
+      const overlay = document.getElementById('sidebarOverlay');
+      sidebar.classList.toggle('open');
+      overlay.classList.toggle('active');
+    }
+
+    function filterNavigation(query) {
+      const q = query.trim().toLowerCase();
+      const items = document.querySelectorAll('#sidebarNavContainer [data-slot="sidebar-menu-button"]');
+      const groups = document.querySelectorAll('#sidebarNavContainer .sidebar-group');
+      let visibleCount = 0;
+
+      items.forEach(btn => {
+        const title = btn.getAttribute('data-title') || '';
+        const match = !q || title.includes(q);
+        const li = btn.closest('li');
+        if (li) li.style.display = match ? 'block' : 'none';
+        if (match) visibleCount++;
+      });
+
+      groups.forEach(group => {
+        const visibleItemsInGroup = group.querySelectorAll('li:not([style*="display: none"])');
+        group.style.display = visibleItemsInGroup.length > 0 ? 'block' : 'none';
+      });
+
+      const noResults = document.getElementById('noSearchResults');
+      if (noResults) {
+        noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+      }
+    }
+  </script>
+</body>
+</html>
