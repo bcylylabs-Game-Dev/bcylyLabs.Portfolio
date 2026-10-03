@@ -4082,13 +4082,17 @@ button, input {
 .brand-mark {
   width: 38px;
   height: 38px;
-  display: grid;
-  place-items: center;
-  border: 1px solid rgba(76,154,255,.45);
-  border-radius: 10px;
-  color: #fff;
-  background: linear-gradient(145deg, #3686df, #245c9b);
-  box-shadow: 0 9px 25px rgba(50,124,203,.25);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.brand-mark img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 4px 10px rgba(50,124,203,.35));
 }
 .version-pill {
   display: inline-flex;
