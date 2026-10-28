@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>13. Shop Products &amp; IAP Rewards | Triple Match Documentation</title>
+  <link rel="icon" type="image/png" href="../../images/icon.png" />
+  <link rel="stylesheet" href="../../../assets/style.css" />
+</head>
+<body style="margin: 0; background: var(--canvas); color: var(--text); min-height: 100vh; display: flex;">
+
+  
+  <!-- Sidebar Mobile Backdrop -->
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMobileSidebar()"></div>
+
+  <!-- Sidebar -->
+  <aside class="docs-sidebar" id="docsSidebar" style="width: var(--sidebar-width); flex-shrink: 0; height: 100vh; position: sticky; top: 0; background: var(--navy-900); border-right: 1px solid var(--sidebar-border); display: flex; flex-direction: column;">
+    <div class="sidebar-brand-area" style="padding: 18px 14px 12px; border-bottom: 1px solid #293344;">
+      <a class="brand-lockup sidebar-brand" href="../../index.html" style="color: #fff; margin-bottom: 15px;">
+        <span class="brand-mark"><img src="../../images/icon.png" alt="Triple Match" /></span>
+        <span><strong>Triple Match</strong><small>Item Sorting Kit</small></span>
+      </a>
+      <label class="sidebar-search">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input id="navSearchInput" aria-label="Search documentation navigation" placeholder="Search documentation" oninput="filterNavigation(this.value)" />
+      </label>
+    </div>
+
+    <div class="sidebar-scroll" style="flex: 1; overflow-y: auto; padding: 8px 6px 18px;" id="sidebarNavContainer">
+      <div class="sidebar-group" data-group="Overview">
+        <ul style="list-style: none; padding: 0; margin: 0;">
+          <li style="margin: 2px 0;">
+            <a data-slot="sidebar-menu-button" 
+               data-active="false" 
+               data-title="kit overview home main"
+               class="" 
+               href="../../index.html" 
+               style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+              <span>Main Overview</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-group" data-group="Getting started">
+        <div data-slot="sidebar-group-label" style="padding: 10px 12px 6px; color: #77869b; font-size: 9px; text-transform: uppercase; letter-spacing: .14em; font-weight: 800;">Getting started</div>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+
+          <li style="margin: 2px 0;">
+            <a data-slot="sidebar-menu-button" 
+               data-active="false" 
+               data-title="quick setup 1. "
+               class="featured-nav-item" 
+               href="../quick-setup/index.html" 
+               style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+              <span>1. Quick Setup</span>
+            </a>
+          </li>
+
+          <li style="margin: 2px 0;">
+            <a data-slot="sidebar-menu-button" 
+               data-active="false" 
+               data-title="find what you want to change 2. "
+               class="" 
+               href="../quick-reference/index.html" 
+               style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+              <span>2. Find What You Want to Change</span>
+            </a>
+          </li>
+
+          <li style="margin: 2px 0;">
+            <a data-slot="sidebar-menu-button" 
+               data-active="false" 
+               data-title="rebrand the game 3. "
+               class="" 
+               href="../rebrand/index.html" 
+               style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+              <span>3. Rebrand the Game</span>
+            </a>
+          </li>
+        </ul></div>
+
+      <div class="sidebar-group" data-group="Items & Level Design">
+        <div data-slot="sidebar-group-label" style="padding: 10px 12px 6px; color: #77869b; font-size: 9px; text-transform: uppercase; letter-spacing: .14em; font-weight: 800;">Items & Level Design</div>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+
+          <li style="margin: 2px 0;">
+            <a data-slot="sidebar-menu-button" 
+               data-active="false" 
+               data-title="add & edit items 4. "
+               class="" 
+               href="../items/index.html" 
+               style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+              <span>4. Add & Edit Items</span>
+            </a>
+          </li>
+
+          <li style="margin: 2px 0;">
+            <a data-slot="sidebar-menu-button" 
+               data-active="false" 
+               data-title="understand the level editor 5. "
+               class="featured-nav-item" 
+               href="../level-editor/index.html" 
+               style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+              <span>5. Understand the Level Editor</span>
+            </a>
+          </li>
+
+          <li style="margin: 2px 0;">
+            <a data-slot="sidebar-menu-button" 
+               data-active="false" 
+               data-title="create your first level 6. "
+               class="" 
+               href="../create-level/index.html" 
+               style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+              <span>6. Create Your First Level</span>
+            </a>
+          </li>
+
+          <li style="margin: 2px 0;">
+            <a data-slot="sidebar-menu-button" 
+               data-active="false" 
+               data-title="edit & manage levels 7. "
+               class="" 
+               href="../manage-levels/index.html" 
+               style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+              <span>7. Edit & Manage Levels</span>
+            </a>
+          </li>
+
+          <li style="margin: 2px 0;">
+            <a data-slot="sidebar-menu-button" 
+               data-active="false" 
+               data-title="generate levels automatically 8. "
+               class="" 
+               href="../level-generator/index.html" 
+               style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+              <span>8. Generate Levels Automatically</span>
+            </a>
+          </li>
+        </ul></div>
+
+      <div class="sidebar-group" data-group="Gameplay & Mechanics">
+        <div data-slot="sidebar-group-label" style="padding: 10px 12px 6px; color: #77869b; font-size: 9px; text-transform: uppercase; letter-spacing: .14em; font-weight: 800;">Gameplay & Mechanics</div>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+
+          <li style="margin: 2px 0;">
+            <a data-slot="sidebar-menu-button" 
+               data-active="false" 
+               data-title="change shelves & obstacles 9. "
+               class="" 
+               href="../shelves-and-obstacles/index.html" 
+               style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+              <span>9. Change Shelves & Obstacles</span>
+            </a>
+          </li>
+
+          <li style="margin: 2px 0;">
+            <a data-slot="sidebar-menu-button" 
+               data-active="false" 
+               data-title="manage boosters 10. "
+               class="" 
+               href="../boosters/index.html" 
+               style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+              <span>10. Manage Boosters</span>
+            </a>
+          </li>
+
+          <li style="margin: 2px 0;">
+            <a data-slot="sidebar-menu-button" 
+               data-active="false" 
+               data-title="coins, lives & rewards 11. "
+               class="" 
+               href="../economy-and-rewards/index.html" 
+               style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+              <span>11. Coins, Lives & Rewards</span>
+            </a>
+          </li>
+
+          <li style="margin: 2px 0;">
+            <a data-slot="sidebar-menu-button" 
+               data-active="false" 
+               data-title="game flow & ui architecture 12. "
+               class="" 
+               href="../game-flow/index.html" 
+               style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+              <span>12. Game Flow & UI Architecture</span>
+            </a>
+          </li>
+        </ul></div>
+
+      <div class="sidebar-group" data-group="Monetization & Audio">
+        <div data-slot="sidebar-group-label" style="padding: 10px 12px 6px; color: #77869b; font-size: 9px; text-transform: uppercase; letter-spacing: .14em; font-weight: 800;">Monetization & Audio</div>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+
+          <li style="margin: 2px 0;">
+            <a data-slot="sidebar-menu-button" 
+               data-active="true" 
+               data-title="shop products & iap rewards 13. "
+               class="" 
+               href="../shop-and-iap/index.html" 
+               style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+              <span>13. Shop Products & IAP Rewards</span>
+            </a>
+          </li>
+
+          <li style="margin: 2px 0;">
+            <a data-slot="sidebar-menu-button" 
+               data-active="false" 
+               data-title="choose when ads appear 14. "
+               class="" 
+               href="../ad-flow/index.html" 
+               style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+              <span>14. Choose When Ads Appear</span>
+            </a>
+          </li>
+
+          <li style="margin: 2px 0;">
+            <a data-slot="sidebar-menu-button" 
+               data-active="false" 
+               data-title="change music & sounds 15. "
+               class="" 
+               href="../audio/index.html" 
+               style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+              <span>15. Change Music & Sounds</span>
+            </a>
+          </li>
+        </ul></div>
+
+      <div class="sidebar-group" data-group="Reference & QA">
+        <div data-slot="sidebar-group-label" style="padding: 10px 12px 6px; color: #77869b; font-size: 9px; text-transform: uppercase; letter-spacing: .14em; font-weight: 800;">Reference & QA</div>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+
+          <li style="margin: 2px 0;">
+            <a data-slot="sidebar-menu-button" 
+               data-active="false" 
+               data-title="important data assets 16. "
+               class="" 
+               href="../data-assets/index.html" 
+               style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+              <span>16. Important Data Assets</span>
+            </a>
+          </li>
+
+          <li style="margin: 2px 0;">
+            <a data-slot="sidebar-menu-button" 
+               data-active="false" 
+               data-title="test your changes (checklist) 17. "
+               class="" 
+               href="../testing-checklist/index.html" 
+               style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+              <span>17. Test Your Changes (Checklist)</span>
+            </a>
+          </li>
+
+          <li style="margin: 2px 0;">
+            <a data-slot="sidebar-menu-button" 
+               data-active="false" 
+               data-title="common questions (faq) 18. "
+               class="" 
+               href="../faq/index.html" 
+               style="display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 6px; font-size: 12px; font-weight: 550; text-decoration: none; transition: background 0.15s ease;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+              <span>18. Common Questions (FAQ)</span>
+            </a>
+          </li>
+        </ul></div>
+
+      <p class="no-search-results" id="noSearchResults" style="display: none; padding: 18px; color: #6f7d90; font-size: 11px;">No matching page.</p>
+    </div>
+
+    <div class="sidebar-footer">
+      <span><i class="status-dot"></i> Documentation v1.0.0</span>
+      <small>Triple Match item sorting kit by bcyly Labs</small>
+    </div>
+  </aside>
+
+
+  <!-- Main Content Shell -->
+  <div class="docs-main-shell" style="flex: 1; min-width: 0; display: flex; flex-direction: column; background: var(--canvas);">
+    <header class="docs-topbar">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <button class="sidebar-toggle-btn" onclick="toggleMobileSidebar()" aria-label="Toggle documentation navigation">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg>
+        </button>
+        <span style="font-weight: 700; color: #fff; letter-spacing: -0.01em;">Triple Match item sorting kit</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <span class="version-pill">v1.0.0</span>
+      </div>
+    </header>
+
+    <div class="docs-layout">
+      <article class="docs-article">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="../../index.html">Documentation</a>
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          <span>Monetization &amp; Audio</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          <strong>Shop Products &amp; IAP Rewards</strong>
+        </nav>
+
+        <header class="page-header">
+          <div class="page-meta">
+            <span class="primary-badge">In-App Purchase</span>
+            <span>Chapter 13 &middot; Monetization &amp; Audio</span>
+          </div>
+          <h1>13. Shop Products &amp; IAP Rewards</h1>
+          <p>Configure IAP databases, create custom product packs without code, and connect purchase buttons to reward deliveries.</p>
+        </header>
+
+        <section class="doc-section" id="13-1-the-game-side-assets">
+  <h2>13.1 The game-side assets</h2>
+  <ul class="doc-bullets"><li><strong>IAP Product Data:</strong> Describes one product and its rewards.</li></ul>
+<ul class="doc-bullets"><li><strong>IAP Database:</strong> Lists the product assets available to the game's reward lookup.</li></ul>
+<ul class="doc-bullets"><li><strong>IAP Reward Manager:</strong> Connects successful purchases to the matching product's rewards.</li></ul>
+<ul class="doc-bullets"><li><strong>Shop Popup:</strong> Displays the shop categories and connects its existing buttons.</li></ul>
+<p>Open <code>Assets/In-apps/IAPDatabase.asset</code> to see the registered game-side products.</p>
+<figure class="doc-figure">
+  <div class="doc-image-frame">
+    <img src="../../images/11_Shop_Rewards/01_iap_database_full_inspector.png" alt="Game-side IAP Database and product references" loading="lazy" />
+  </div>
+  <figcaption>Game-side IAP Database and product references</figcaption>
+</figure>
+<p>Select a product reference, or open an asset in <code>Assets/In-apps/Products</code>, to edit the actual reward data. The separate store catalog is not the same as these game-side product assets.</p>
+</section>
+<section class="doc-section" id="13-2-product-fields">
+  <h2>13.2 Product fields</h2>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Field</th><th>What it does</th></tr></thead>
+    <tbody><tr><td>Product Key</td><td>Unique key linking the purchase to this game's reward definition. It must match the registered purchase product.</td></tr><tr><td>Display Name</td><td>Product title available to the game UI and delivery message.</td></tr><tr><td>Description</td><td>Description of the offer.</td></tr><tr><td>Fallback Price</td><td>A display fallback. Changing it does not set the real store price.</td></tr><tr><td>Icon</td><td>Product artwork available to UI that uses this field.</td></tr><tr><td>Is One Time Only</td><td>Records a purchased flag after delivery. The shop must use that state to hide or block the offer; the checkbox alone is not a universal purchase block.</td></tr><tr><td>Rewards</td><td>The list of rewards delivered for this product.</td></tr></tbody>
+  </table>
+</div>
+<p>Existing shop cards can have their own artwork and text. Check and update the visible card too; product metadata is not a promise that every existing card updates automatically.</p>
+</section>
+<section class="doc-section" id="13-3-reward-choices">
+  <h2>13.3 Reward choices</h2>
+  <p>Rewards are entries inside a product asset. They are not separate ScriptableObject files in this project.</p>
+<div class="table-wrap">
+  <table>
+    <thead><tr><th>Reward Type</th><th>Fields to set</th><th>Result</th></tr></thead>
+    <tbody><tr><td>Coins</td><td>Amount</td><td>Adds coins.</td></tr><tr><td>Booster</td><td>Booster Type and Amount</td><td>Adds stock for an existing booster.</td></tr><tr><td>Infinite Lives</td><td>Duration Hours</td><td>Grants infinite lives for that duration.</td></tr><tr><td>Full Refill Lives</td><td>Type</td><td>Fills lives to the normal maximum.</td></tr><tr><td>Remove Ads</td><td>Type</td><td>Enables the existing no-ads state.</td></tr><tr><td>Unlock Shelf Slot</td><td>Type</td><td>Runs the existing Unlock booster for free. It needs an eligible lock or obstacle during gameplay.</td></tr></tbody>
+  </table>
+</div>
+<p>Only fields relevant to the selected reward type are used. For example, Duration Hours is used for Infinite Lives, while Amount is used for coins and boosters.</p>
+</section>
+<section class="doc-section" id="13-4-make-a-new-reward-pack-without-changing-scripts">
+  <h2>13.4 Make a new reward pack without changing scripts</h2>
+  <ol class="step-list"><li>
+  <span>01</span>
+  <div><strong>Open <code>Assets/In-apps/Products</code></strong><p></p></div>
+</li>
+</ol>
+<ol class="step-list"><li>
+  <span>01</span>
+  <div><strong>Step 1</strong><p>Duplicate a similar product asset using the Project window.</p></div>
+</li>
+</ol>
+<ol class="step-list"><li>
+  <span>01</span>
+  <div><strong>Rename the new asset</strong><p></p></div>
+</li>
+</ol>
+<ol class="step-list"><li>
+  <span>01</span>
+  <div><strong>Give it a unique Product Key</strong><p></p></div>
+</li>
+</ol>
+<ol class="step-list"><li>
+  <span>01</span>
+  <div><strong>Step 1</strong><p>Set its title, description, artwork, and display fallback.</p></div>
+</li>
+</ol>
+<ol class="step-list"><li>
+  <span>01</span>
+  <div><strong>Edit the Rewards list</strong><p></p></div>
+</li>
+</ol>
+<ol class="step-list"><li>
+  <span>01</span>
+  <div><strong>Step 1</strong><p>Add the new product asset to IAPDatabase > Products.</p></div>
+</li>
+</ol>
+<ol class="step-list"><li>
+  <span>01</span>
+  <div><strong>Step 1</strong><p>Ensure the game manager's IAP Reward Manager uses this database.</p></div>
+</li>
+</ol>
+<ol class="step-list"><li>
+  <span>01</span>
+  <div><strong>Step 1</strong><p>Connect a purchase button to the matching registered product through the existing purchase-button integration.</p></div>
+</li>
+</ol>
+<ol class="step-list"><li>
+  <span>01</span>
+  <div><strong>Step 1</strong><p>Test the purchase result and all rewards.</p></div>
+</li>
+</ol>
+<p><strong>Example:</strong> A Weekend Pack can contain Coins > 2000, Booster > Hammer > 3, and Infinite Lives > 2 hours. These existing reward types can be combined without adding a new reward script.</p>
+<p>Creating the reward asset does not register a real store product. Its key also needs to exist in the purchase setup. Store and SDK setup are covered separately.</p>
+</section>
+<section class="doc-section" id="13-5-shop-layout-and-new-calling">
+  <h2>13.5 Shop layout and new calling</h2>
+  <figure class="doc-figure">
+  <div class="doc-image-frame">
+    <img src="../../images/11_Shop_Rewards/03_shop_popup_inspector.png" alt="Shop categories, containers, and button references" loading="lazy" />
+  </div>
+  <figcaption>Shop categories, containers, and button references</figcaption>
+</figure>
+<p>The supplied shop has categories for Coins, No Ads, Starter, Bundles, Lives, and Rescues. Its Inspector connects the category buttons, content containers, and existing purchase buttons.</p>
+<p>For an existing offer, change its game-side reward asset and update the card's visible content. Assigning a replacement Button to an existing named field keeps that field's existing product call.</p>
+<p>For a <strong>new product key</strong>, do not assign its card to an unrelated old product field: the supplied Shop Popup binds those fields to specific existing keys. Use the included <strong>Bcyly IAP Button</strong> integration on a new card, select its matching registered product, and let that component own the purchase click. Avoid also assigning that button to an old auto-bound purchase field.</p>
+<p>The simple purchase flow is:</p>
+<p><strong>Purchase button > purchase system > successful purchase > IAP Reward Manager > matching Product Key in IAP Database > Rewards list > coins/lives/boosters update.</strong></p>
+<p>For an extra purchase location, reuse the existing purchase-button integration. Do not connect the product's <strong>Deliver</strong> action directly to a normal purchase click; delivery belongs after successful purchase confirmation.</p>
+<p>The existing time and space rescue popups listen for specific rescue product keys. A new general reward pack does not automatically become a new rescue behavior.</p>
+</section>
+
+        <nav class="page-pagination" aria-label="Documentation page navigation">
+          
+        <a class="page-link previous" href="../game-flow/index.html">
+          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+          <span>
+            <small>Previous</small>
+            <strong>12. Game Flow & UI Architecture</strong>
+          </span>
+        </a>
+          
+        <a class="page-link next" href="../ad-flow/index.html">
+          <span>
+            <small>Next</small>
+            <strong>14. Choose When Ads Appear</strong>
+          </span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        </nav>
+      </article>
+
+      <aside class="table-of-contents" aria-label="On this page">
+        <strong>On this page</strong>
+        <nav>
+          <a href="#13-1-the-game-side-assets">13.1 The game-side assets</a><a href="#13-2-product-fields">13.2 Product fields</a><a href="#13-3-reward-choices">13.3 Reward choices</a><a href="#13-4-make-a-new-reward-pack-without-changing-scripts">13.4 Make a new reward pack without changing scripts</a><a href="#13-5-shop-layout-and-new-calling">13.5 Shop layout and new calling</a>
+        </nav>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    function toggleMobileSidebar() {
+      const sidebar = document.getElementById('docsSidebar');
+      const overlay = document.getElementById('sidebarOverlay');
+      sidebar.classList.toggle('open');
+      overlay.classList.toggle('active');
+    }
+
+    function filterNavigation(query) {
+      const q = query.trim().toLowerCase();
+      const items = document.querySelectorAll('#sidebarNavContainer [data-slot="sidebar-menu-button"]');
+      const groups = document.querySelectorAll('#sidebarNavContainer .sidebar-group');
+      let visibleCount = 0;
+
+      items.forEach(btn => {
+        const title = btn.getAttribute('data-title') || '';
+        const match = !q || title.includes(q);
+        const li = btn.closest('li');
+        if (li) li.style.display = match ? 'block' : 'none';
+        if (match) visibleCount++;
+      });
+
+      groups.forEach(group => {
+        const visibleItemsInGroup = group.querySelectorAll('li:not([style*="display: none"])');
+        group.style.display = visibleItemsInGroup.length > 0 ? 'block' : 'none';
+      });
+
+      const noResults = document.getElementById('noSearchResults');
+      if (noResults) {
+        noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+      }
+    }
+  </script>
+</body>
+</html>
